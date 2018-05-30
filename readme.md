@@ -24,6 +24,6 @@ it should be run on localhost:3000
 ## For the API
 ```
 * git clone git@github.com:hadi-/sailsapi.git
-* read readme.me on https://github.com/hadi-/sailsapi
+* read readme.md on https://github.com/hadi-/sailsapi
 ```
 
