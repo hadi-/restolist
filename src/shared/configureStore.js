@@ -4,10 +4,12 @@ import thunk from 'redux-thunk';
 // Logger with default options
 import logger from 'redux-logger';
 
-import repos from './../../redux/repos';
+import resto from './../../redux/resto';
+import category from './../../redux/category';
 
 const reducer = combineReducers({
-  repos,
+  resto,
+  category
 });
 
 const configureStore = preloadedState =>

@@ -3,36 +3,33 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchData } from './../../../redux/resto';
 import { fetchCategoryData } from './../../../redux/category';
+import { fetchCategoryDataById } from './../../../redux/category';
 import RestoList from './../../component/RestoList/RestoList';
 import TopNav from './../../component/TopNav/TopNav';
 
-class Home extends Component {
-  static initialAction() {
-    return fetchData();
-    return fetchCategoryData();
-  }
+
+class Category extends Component {
 
   componentDidMount() {
-    if (!this.props.resto.fetched) {
-      this.props.dataFetchAction();
-    }
-    if (!this.props.category.fetched) {
+    const { params } = this.props.match;
       this.props.catFetchAction();
-    }
+      this.props.catFetchIdAction(params.id);
   }
+ 
 
   render() {
-    const { resto, category } = this.props;
+    const { category } = this.props;
+
     return (
       <div>
         <TopNav category={category.list} />
-        <RestoList resto={resto.list} category={category.list} />
+        <RestoList resto={category.restolist} />
       </div>
     );
   }
 }
 
-Home.propTypes = {
+Category.propTypes = {
   resto: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   category: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   dataFetchAction: PropTypes.func.isRequired,
@@ -45,8 +42,8 @@ const mapStateToProps = state => ({
 });
 
 const mapActionsToProps = {
-  dataFetchAction: fetchData,
   catFetchAction: fetchCategoryData,
+  catFetchIdAction: fetchCategoryDataById,
 };
 
-export default connect(mapStateToProps, mapActionsToProps)(Home);
+export default connect(mapStateToProps, mapActionsToProps)(Category);

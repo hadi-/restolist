@@ -1,5 +1,5 @@
 import Home from './home';
-import Repo from './repo';
+import Category from './Category';
 import NotFound from './404/NotFound';
 
 const routes = [
@@ -9,8 +9,8 @@ const routes = [
     component: Home,
   },
   {
-    path: '/repo',
-    component: Repo,
+    path: '/category/:id',
+    component: Category,
   },
   {
     component: NotFound,
